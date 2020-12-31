@@ -11,6 +11,7 @@
 <script>
 // @ is an alias to /src
 import ProfileCard from '@/components/ProfileCard.vue'
+import ProfileService from '@/services/ProfileService.js'
 
 export default {
   name: 'Profiles',
@@ -19,51 +20,19 @@ export default {
   },
   data() {
     return {
-      profiles: [
-        {
-          id: 1001,
-          title: this.fullName,
-          firstName: 'John',
-          middleName: 'Doe',
-          lastName: 'Example',
-          dob: '1980-01-01',
-          age: this.getAge
-        },
-        {
-          id: 1002,
-          title: this.fullName,
-          firstName: 'Jane',
-          middleName: 'Doe',
-          lastName: 'Example',
-          dob: '1990-01-01',
-          age: this.getAge
-        },
-        {
-          id: 1003,
-          title: this.fullName,
-          firstName: 'Barry',
-          middleName: 'John',
-          lastName: 'Allen',
-          dob: '1980-01-01',
-          age: this.getAge
-        },
-        {
-          id: 1004,
-          title: this.fullName,
-          firstName: 'Bruce',
-          middleName: 'Knight',
-          lastName: 'Wayne',
-          dob: '1970-01-01',
-          age: this.getAge
-        }
-      ]
+      profiles: null
     }
   },
+  created() {
+    ProfileService.getProfiles()
+      .then(response => {
+        this.profiles = response.data
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
   computed: {
-    uID: () => {
-      var u = 0
-      return this.profile.fullName + u++
-    },
     fullName: {
       get: function() {
         return this.firstName + ' ' + this.lastName
