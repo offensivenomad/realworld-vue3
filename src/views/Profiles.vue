@@ -31,26 +31,6 @@ export default {
       .catch(error => {
         console.log(error)
       })
-  },
-  computed: {
-    fullName: {
-      get: function() {
-        return this.firstName + ' ' + this.lastName
-      },
-      set: function(name) {
-        var names = name.split(' ')
-        this.firstName = names[0]
-        this.lastName = names[names.length - 1]
-      }
-    },
-    birthDate: () => {
-      return this.profile.dob
-    },
-    getAge: function() {
-      return Math.floor(
-        (new Date() - new Date(this.profile.dob).getTime()) / 3.15576e10
-      )
-    }
   }
 }
 </script>

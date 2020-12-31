@@ -1,4 +1,15 @@
 {
+  "locations": [
+    {
+      "id": 1000,
+      "profileId": 1001,
+      "type": "residential",
+      "street": "123 Somewhere St",
+      "suburb": "Somewhereville",
+      "state": "NSW",
+      "postcode": "2000"
+    }
+  ],
   "profiles": [
     {
       "id": 1001,
